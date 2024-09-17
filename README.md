@@ -1,3 +1,4 @@
+Task Manager
 A robust and user-friendly task management application built with Django and deployed on Vercel.
 🌟 Features
 
@@ -53,12 +54,3 @@ To deploy:
 Install the Vercel CLI: npm i -g vercel
 Run vercel --prod in the project root
 Follow the prompts to link your Vercel account and project
-
-🤝 Contributing
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-Fork the repository
-Create your feature branch (git checkout -b feature/AmazingFeature)
-Commit your changes (git commit -m 'Add some AmazingFeature')
-Push to the branch (git push origin feature/AmazingFeature)
-Open a Pull Request
