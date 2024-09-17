@@ -1,0 +1,86 @@
+{% extends 'tasks/base.html' %}
+
+{% block title %}My Tasks{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">My Tasks</h1>
+<a href="{% url 'task_create' %}" class="btn btn-primary mb-3">
+    <i class="fas fa-plus"></i> New Task
+</a>
+
+<h2>High Priority Tasks</h2>
+<div class="row">
+    {% for task in high_priority_tasks %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">{{ task.title }}</h5>
+                    <p class="card-text">{{ task.description|truncatechars:100 }}</p>
+                    <p class="card-text">
+                        Deadline: {{ task.deadline|date:"Y-m-d H:i" }}
+                    </p>
+                    <p class="card-text">
+                        {% if task.completed %}
+                            <span class="badge bg-success">Completed</span>
+                        {% else %}
+                            <span class="badge bg-warning">Pending</span>
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <a href="{% url 'task_detail' task.id %}" class="btn btn-sm btn-primary">
+                        <i class="fas fa-eye"></i> View
+                    </a>
+                    <a href="{% url 'task_update' task.id %}" class="btn btn-sm btn-secondary">
+                        <i class="fas fa-edit"></i> Edit
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <div class="col">
+            <div class="alert alert-info" role="alert">
+                <i class="fas fa-info-circle"></i> No high priority tasks yet.
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<h2>Normal Priority Tasks</h2>
+<div class="row">
+    {% for task in normal_priority_tasks %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">{{ task.title }}</h5>
+                    <p class="card-text">{{ task.description|truncatechars:100 }}</p>
+                    <p class="card-text">
+                        Deadline: {{ task.deadline|date:"Y-m-d H:i" }}
+                    </p>
+                    <p class="card-text">
+                        {% if task.completed %}
+                            <span class="badge bg-success">Completed</span>
+                        {% else %}
+                            <span class="badge bg-warning">Pending</span>
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <a href="{% url 'task_detail' task.id %}" class="btn btn-sm btn-primary">
+                        <i class="fas fa-eye"></i> View
+                    </a>
+                    <a href="{% url 'task_update' task.id %}" class="btn btn-sm btn-secondary">
+                        <i class="fas fa-edit"></i> Edit
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <div class="col">
+            <div class="alert alert-info" role="alert">
+                <i class="fas fa-info-circle"></i> No normal priority tasks yet.
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
