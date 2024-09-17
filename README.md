@@ -1,45 +1,70 @@
-Task Manager
-A robust and user-friendly task management application built with Django and deployed on Vercel.
-🌟 Features
+# Task Manager
 
-User authentication (login, logout, registration)
-Create, read, update, and delete tasks
-Mark tasks as complete or incomplete
-Categorize tasks
-Set due dates for tasks
-Responsive design for mobile and desktop
+A robust and user-friendly task management application built with Django and deployed on Vercel. 🌟
 
-🚀 Demo
-Check out the live demo: Task Manager App
-🛠️ Installation
+## Features
 
-Clone the repository:
-Copygit clone https://github.com/your-username/task-manager.git
-cd task-manager
+- User authentication (login, logout, registration)
+- Create, read, update, and delete tasks
+- Mark tasks as complete or incomplete
+- Categorize tasks
+- Set due dates for tasks
+- Responsive design for mobile and desktop
 
-Create a virtual environment and activate it:
-Copypython -m venv env
-source env/bin/activate  # On Windows, use `env\Scripts\activate`
+## 🚀 Demo
 
-Install the required packages:
-Copypip install -r requirements.txt
+Check out the live demo: [Task Manager App](http://your-live-demo-url.com)
 
-Set up your environment variables. Create a .env file in the root directory and add:
-CopySECRET_KEY=your_secret_key
-DEBUG=True
-POSTGRES_URL=your_database_url
+## 🛠️ Installation
 
-Run migrations:
-Copypython manage.py migrate
+1. Clone the repository:
 
-Start the development server:
-Copypython manage.py runserver
+    ```bash
+    git clone https://github.com/your-username/task-manager.git
+    cd task-manager
+    ```
 
-Open your browser and navigate to http://localhost:8000
+2. Create a virtual environment and activate it:
 
-📊 Database Schema
+    ```bash
+    python -m venv env
+    source env/bin/activate  # On Windows, use env\Scripts\activate
+    ```
+
+3. Install the required packages:
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4. Set up your environment variables. Create a `.env` file in the root directory and add:
+
+    ```dotenv
+    SECRET_KEY=your_secret_key
+    DEBUG=True
+    POSTGRES_URL=your_database_url
+    ```
+
+5. Run migrations:
+
+    ```bash
+    python manage.py migrate
+    ```
+
+6. Start the development server:
+
+    ```bash
+    python manage.py runserver
+    ```
+
+7. Open your browser and navigate to [http://localhost:8000](http://localhost:8000)
+
+## 📊 Database Schema
+
 The application uses a PostgreSQL database with the following main model:
-pythonCopyclass Task(models.Model):
+
+```python
+class Task(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True)
     completed = models.BooleanField(default=False)
@@ -47,10 +72,3 @@ pythonCopyclass Task(models.Model):
     due_date = models.DateTimeField(null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.CharField(max_length=100, blank=True)
-🚢 Deployment
-This project is configured for deployment on Vercel. The vercel.json file in the root directory contains the necessary configuration.
-To deploy:
-
-Install the Vercel CLI: npm i -g vercel
-Run vercel --prod in the project root
-Follow the prompts to link your Vercel account and project
